@@ -9,6 +9,10 @@ const listEvents = async (req, res) => {
     })
 }
 
+const getEventById = async (req, res) => {
+
+}
+
 const createEvent = async (req, res) => {
     try{
         const newEvent = {
@@ -29,5 +33,13 @@ const createEvent = async (req, res) => {
       }
 }
 
+const updateEvent = async (req, res) => {
 
-module.exports = {listEvents, createEvent}
+}
+
+const deleteEvent = async (req, res) => {
+
+}
+
+
+module.exports = {listEvents, getEventById, createEvent, updateEvent, deleteEvent}
