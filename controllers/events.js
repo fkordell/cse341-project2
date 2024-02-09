@@ -1,5 +1,5 @@
 const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
+// const ObjectId = require('mongodb').ObjectId;
 
 const listEvents = async (req, res) => {
     const result = await mongodb.getDb().db().collection('events').find();
