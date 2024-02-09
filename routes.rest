@@ -33,22 +33,22 @@ DELETE http://localhost:8080/ HTTP/1.1
 
 ###
 //Get all events
-GET https://cse341-project2-h8z8.onrender.com/contacts HTTP/1.1
+GET http://cse341-project2-h8z8.onrender.com/contacts HTTP/1.1
 
 ###
 // Get an event by id
-GET https://cse341-project2-h8z8.onrender.com/contacts/65c56104f896d5e7ea92fc46 HTTP/1.1
+GET http://cse341-project2-h8z8.onrender.com/contacts/65c56104f896d5e7ea92fc46 HTTP/1.1
 
 ###
 //Create a new event
-POST https://cse341-project2-h8z8.onrender.com/contacts HTTP/1.1
+POST http://cse341-project2-h8z8.onrender.com/contacts HTTP/1.1
 
 ###
 //Update an event
-PUT https://cse341-project2-h8z8.onrender.com/ HTTP/1.1
+PUT http://cse341-project2-h8z8.onrender.com/ HTTP/1.1
 
 ###
 //Delete an event
-DELETE https://cse341-project2-h8z8.onrender.com/ HTTP/1.1
+DELETE http://cse341-project2-h8z8.onrender.com/ HTTP/1.1
 
 
