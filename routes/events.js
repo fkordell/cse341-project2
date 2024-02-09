@@ -6,15 +6,15 @@ const eventsController = require('../controllers/events');
 router.get('/', eventsController.listEvents);
 
 //GEt an event by it's id
-router.get('/', eventsController.getEventById);
+router.get('/:id', eventsController.getEventById);
 
 //Create a new event
 router.post('/', eventsController.createEvent);
 
 //update an event
-router.put('/', eventsController.updateEvent);
+router.put('/:id', eventsController.updateEvent);
 
 //Delete an event
-router.delete('/', eventsController.deleteEvent);
+router.delete('/:id', eventsController.deleteEvent);
 
 module.exports = router;
