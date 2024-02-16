@@ -13,18 +13,32 @@ POST http://localhost:8080/events HTTP/1.1
 content-type: application/json
 
 {
-    "eventName": "Superbowl 59",
-    "eventDate": "02/11/2024",
-    "paymentRecieved": "Yes",
-    "customerName": "Kordell Farley"
+  "title": "Camp",
+  "description": "Teton Summit lodge",
+  "date": "2024-07-11",
+  "time": "06:30 PM",
+  "location": "Grand Teton National Park",
+  "attendees": 102
+
 }
 
 ### update an event
-PUT http://localhost:8080/events HTTP/1.1
+PUT http://localhost:8080/events/65cfedecee070b0aee89b308 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Ward BBQ",
+  "description": "Come enjoy some brisket and corn on the cob and get to know your fellow ward members.",
+  "time": "05:45 PM",
+  "date": "2024-05-04T00:00:00.000Z",
+  "location": "Bishops House",
+  "attendees": 200
+}
 
 
 ### Delete an event
-DELETE http://localhost:8080/events HTTP/1.1
+DELETE http://localhost:8080/events/65cfebdeee070b0aee89b303 HTTP/1.1
+
 
 
 //////////////////////////
