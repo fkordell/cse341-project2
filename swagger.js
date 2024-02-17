@@ -5,7 +5,7 @@ const doc = {
     title: 'Events API',
     description: 'Events API'
   },
-  host: 'cse341-farley.onrender.com',
+  host: 'cse341-project2-h8z8.onrender.com',
   schemes: ['https']
 };
 
