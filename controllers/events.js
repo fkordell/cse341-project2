@@ -25,25 +25,50 @@ exports.getEventById = async (req, res) => {
 
 exports.createEvent = async (req, res) => {
   try {
-    const newEvent = new Event(req.body); 
-    const savedEvent = await newEvent.save(); 
-    res.status(201).json(savedEvent); 
-  } catch (err) {
-    res.status(500).json({ message: 'Error creating event', error: err });
+    const newEvent = {
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      time: req.body.time,
+      location: req.body.location,
+      attendees: req.body.attendees
+    };
+    const result = await mongodb.getDb().db().collection('events').insertOne(newEvent);
+    if (result.acknowledged) {
+      res.status(201).json(result);
+    } else {
+      res.status(500).send('Event was not created');
+    }
+  } catch (error) {
+    console.error('Error creating event:', error);
+    res.status(500).send('Internal Server Error');
   }
 };
 
-exports.updateEvent = async (req, res) => {
+
+const updateEvent = async (req, res) => {
   try {
-    const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedEvent) {
-      return res.status(404).json({ message: 'Event not found' });
+    const eventId = req.params.id; 
+    const updateData = {
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      time: req.body.time,
+      location: req.body.location,
+      attendees: req.body.attendees
+    };
+    const result = await mongodb.getDb().db().collection('events').updateOne({ _id: mongodb.ObjectId(eventId) }, { $set: updateData });
+    if (result.modifiedCount > 0) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).send('Event not found');
     }
-    res.status(200).json(updatedEvent);
-  } catch (err) {
-    res.status(500).json({ message: 'Error updating event', error: err });
+  } catch (error) {
+    console.error('Error updating event:', error);
+    res.status(500).send('Internal Server Error');
   }
 };
+
 
 
 exports.deleteEvent = async (req, res) => {
