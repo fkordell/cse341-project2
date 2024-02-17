@@ -46,7 +46,7 @@ exports.createEvent = async (req, res) => {
 };
 
 
-const updateEvent = async (req, res) => {
+exports.updateEvent = async (req, res) => {
   try {
     const eventId = req.params.id; 
     const updateData = {
