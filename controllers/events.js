@@ -25,25 +25,28 @@ exports.getEventById = async (req, res) => {
 
 exports.createEvent = async (req, res) => {
   try {
-    const newEvent = {
+    const newEvent = new Event({
       title: req.body.title,
       description: req.body.description,
       date: req.body.date,
       time: req.body.time,
       location: req.body.location,
       attendees: req.body.attendees
-    };
-    const result = await mongodb.getDb().db().collection('events').insertOne(newEvent);
-    if (result.acknowledged) {
-      res.status(201).json(result);
-    } else {
-      res.status(500).send('Event was not created');
-    }
+    });
+
+    const result = await newEvent.save(); 
+
+    res.status(201).json(result);
   } catch (error) {
-    console.error('Error creating event:', error);
-    res.status(500).send('Internal Server Error');
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ message: 'Validation failed', errors: error.errors });
+    } else {
+      console.error('Error creating event:', error);
+      res.status(500).json({ message: 'Internal Server Error', error: error });
+    }
   }
 };
+
 
 
 exports.updateEvent = async (req, res) => {
