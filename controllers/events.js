@@ -48,7 +48,7 @@ exports.createEvent = async (req, res) => {
 
 exports.updateEvent = async (req, res) => {
   try {
-    const eventId = req.params.id; 
+    const eventId = req.params.id;
     const updateData = {
       title: req.body.title,
       description: req.body.description,
@@ -57,15 +57,21 @@ exports.updateEvent = async (req, res) => {
       location: req.body.location,
       attendees: req.body.attendees
     };
-    const result = await mongodb.getDb().db().collection('events').updateOne({ _id: mongodb.ObjectId(eventId) }, { $set: updateData });
-    if (result.modifiedCount > 0) {
-      res.status(200).json(result);
-    } else {
-      res.status(404).send('Event not found');
+
+    const updatedEvent = await Event.findByIdAndUpdate(eventId, updateData, { new: true, runValidators: true });
+
+    if (!updatedEvent) {
+      return res.status(404).json({ message: 'Event not found' });
     }
+
+    res.status(200).json(updatedEvent);
   } catch (error) {
-    console.error('Error updating event:', error);
-    res.status(500).send('Internal Server Error');
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ message: 'Validation failed', errors: error.errors });
+    } else {
+      console.error('Error updating event:', error);
+      res.status(500).json({ message: 'Internal Server Error', error: error });
+    }
   }
 };
 
