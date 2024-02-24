@@ -1,20 +1,21 @@
 const express = require('express');
+const isAuthenticated = require('../middleware/isAuthenticated');
 const router = express.Router();
 const eventsController = require('../controllers/events');
 
 //Get a list of all events
-router.get('/', eventsController.getEvents);
+router.get('/', isAuthenticated, eventsController.getEvents);
 
-//GEt an event by it's id
-router.get('/:id', eventsController.getEventById);
+//Get an event by it's id
+router.get('/:id', isAuthenticated, eventsController.getEventById);
 
 //Create a new event
-router.post('/', eventsController.createEvent);
+router.post('/', isAuthenticated, eventsController.createEvent);
 
-//update an event
-router.put('/:id', eventsController.updateEvent);
+//Update an event
+router.put('/:id', isAuthenticated, eventsController.updateEvent);
 
 //Delete an event
-router.delete('/:id', eventsController.deleteEvent);
+router.delete('/:id', isAuthenticated, eventsController.deleteEvent);
 
 module.exports = router;

@@ -1,5 +1,10 @@
 //Localhost 
 
+///////////////////
+//EVENTS Requests//
+//////////////////
+
+
 //Get all events
 GET http://localhost:8080/events HTTP/1.1
 
@@ -40,10 +45,53 @@ content-type: application/json
 DELETE http://localhost:8080/events/65cfebdeee070b0aee89b303 HTTP/1.1
 
 
+//////////////////////
+///User Requests/////
+////////////////////
+
+###
+//Get all users
+GET http://localhost:8080/user HTTP/1.1
+
+###
+//Get a user by their id
+GET http://localhost:8080/user/ HTTP/1.1
+
+###
+//Create a user
+POST http://localhost:8008/user HTTP/1.1
+content-type: application/application/json
+
+{
+    "userName": "",
+    "password": "",
+    "email": "",
+    "phoneNumber": ""
+}
+
+### 
+//Update a user
+PUT http://localhost:8080/user/ HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "",
+    "password": "",
+    "email": "",
+    "phoneNumber": ""
+}
+
+###
+//Delete a user
+DELETE http://localhost:8080/user/ HTTP/1.1
 
 //////////////////////////
 ///////PRODUCTION/////////
 //////////////////////////
+
+///////////////////
+//Events Requests//
+//////////////////
 
 ###
 //Get all events
@@ -66,3 +114,26 @@ PUT http://cse341-project2-h8z8.onrender.com/events HTTP/1.1
 DELETE http://cse341-project2-h8z8.onrender.com/events HTTP/1.1
 
 
+//////////////////
+//Event Requests//
+/////////////////
+
+###
+//Get all users
+GET http://cse-341-project2-h8z8.onrender.com/user HTTP/1.1
+
+###
+//Get a user by their id
+GET http://cse-341-project2-h8z8.onrender.com/user/ HTTP/1.1
+
+###
+//Create a user 
+POST http://cse-341-project2-h8z8.onrender.com/user HTTP/1.1
+
+###
+//Update a user by their id
+PUT http://cse-341-project2-h8z8.onrender.com/user/ HTTP/1.1
+
+###
+//Delete a user by their id
+DELETE  http://cse-341-project2-h8z8.onrender.com/user/ HTTP/1.1
