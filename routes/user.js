@@ -1,5 +1,5 @@
 const express = require('express');
-const isAuthenticated = require('../middleware/isAuthenticated');
+const { requiresAuth } = require('express-openid-connect');
 const router = express.Router();
 const userController = require('../controllers/user');
 
@@ -10,12 +10,12 @@ router.get('/', userController.getUsers);
 router.get('/:id', userController.getUserById);
 
 //Create a new event
-router.post('/', isAuthenticated, userController.createUser);
+router.post('/', requiresAuth(), userController.createUser);
 
 //Update an event
-router.put('/:id', isAuthenticated, userController.updateUser);
+router.put('/:id', requiresAuth(), userController.updateUser);
 
 //Delete an event
-router.delete('/:id', isAuthenticated, userController.deleteUser);
+router.delete('/:id', requiresAuth(), userController.deleteUser);
 
 module.exports = router;
