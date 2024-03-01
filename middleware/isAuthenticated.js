@@ -1,9 +1,10 @@
 function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next(); 
-    }
-    res.status(401).json({ message: 'User is not authenticated' });
+  if (req.oidc.isAuthenticated()) {
+      return next();
   }
-  
-  module.exports = isAuthenticated;
+  res.status(401).json({ message: 'User is not authenticated' });
+}
+
+module.exports = isAuthenticated;
+
   

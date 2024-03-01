@@ -4,10 +4,10 @@ const router = express.Router();
 const eventsController = require('../controllers/events');
 
 //Get a list of all events
-router.get('/', isAuthenticated, eventsController.getEvents);
+router.get('/',  eventsController.getEvents);
 
 //Get an event by it's id
-router.get('/:id', isAuthenticated, eventsController.getEventById);
+router.get('/:id', eventsController.getEventById);
 
 //Create a new event
 router.post('/', isAuthenticated, eventsController.createEvent);
