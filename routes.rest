@@ -20,7 +20,7 @@ content-type: application/json
 {
   "title": "Camp",
   "description": "Teton Summit lodge",
-  "date": "2024-07-11",
+  "date": "2024-08-11",
   "time": "06:30 PM",
   "location": "Grand Teton National Park",
   "attendees": 102
