@@ -10,6 +10,14 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {  
+    "oauth2Security": {
+      "type": "oauth2",
+      "authorizationUrl": "https://dev-h3by8c0lbr6fqsrh.us.auth0.com/authorize",
+      "flow": "implicit",
+      "scopes": {}
+    }
+  },
   "paths": {
     "/events/": {
       "get": {
@@ -25,6 +33,11 @@
       },
       "post": {
         "description": "",
+        "security": [  
+          {
+            "oauth2Security": []
+          }
+        ],
         "parameters": [
           {
             "name": "body",
