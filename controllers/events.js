@@ -47,8 +47,6 @@ exports.createEvent = async (req, res) => {
   }
 };
 
-
-
 exports.updateEvent = async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -77,8 +75,6 @@ exports.updateEvent = async (req, res) => {
     }
   }
 };
-
-
 
 exports.deleteEvent = async (req, res) => {
   try {

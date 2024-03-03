@@ -1,6 +1,6 @@
 const express = require('express');
-const { requiresAuth } = require('express-openid-connect');
 const router = express.Router();
+const authorize = require('../controllers/authenticate');
 const userController = require('../controllers/user');
 
 //Get a list of all users
@@ -10,12 +10,12 @@ router.get('/', userController.getUsers);
 router.get('/:id', userController.getUserById);
 
 //Create a new event
-router.post('/', requiresAuth(), userController.createUser);
+router.post('/', authorize.authUserLogin, userController.createUser);
 
 //Update an event
-router.put('/:id', requiresAuth(), userController.updateUser);
+router.put('/:id', authorize.authUserLogin, userController.updateUser);
 
 //Delete an event
-router.delete('/:id', requiresAuth(), userController.deleteUser);
+router.delete('/:id', authorize.authUserLogin, userController.deleteUser);
 
 module.exports = router;
