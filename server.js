@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use('/', require('./routes'));
+app.use('/', require('./routes'));
 
 app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
